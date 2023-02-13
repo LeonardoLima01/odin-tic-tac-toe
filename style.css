@@ -17,8 +17,8 @@ body {
 }
 
 .container {
-  border: 2px solid gray;
-  margin: 5% 30%;
+  border: 1px solid gray;
+  margin: 0 30%;
   display: flex;
   flex-direction: column;
   flex: 0.5;
@@ -69,6 +69,11 @@ body {
   border: 2px solid white;
   border-top: 0px;
   border-left: 0px;
+  font-size: 50px;
+}
+
+.box > div:empty {
+  cursor: pointer;
 }
 
 .box > div.right {
@@ -104,4 +109,11 @@ button:active {
 
 button {
   border-radius: 15px;
+}
+
+.turn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
 }
