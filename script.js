@@ -23,15 +23,7 @@ let player = (function () {
   let _symbolButtons = Array.from(
     document.querySelectorAll(".selector>button")
   );
-  let playerSymbol = "";
-
-  // Update player symbol on button click
-  for (let i = 0; i < _symbolButtons.length; i++) {
-    _symbolButtons[i].addEventListener("click", () => {
-      playerSymbol = _symbolButtons[i].textContent;
-      console.log(playerSymbol + " CHOSEN");
-    });
-  }
+  let playerSymbol = "X";
 
   // Update symbol on request
   let getPlayerSymbol = () => playerSymbol;
@@ -50,9 +42,9 @@ let player = (function () {
   restartButton.addEventListener("click", () => {
     for (let i = 0; i < grid.spaces.length; i++) {
       grid.spaces[i].textContent = "";
-      toggleTurn();
+      turn.textContent = "Player 1's turn";
     }
-    playerSymbol = "";
+    playerSymbol = "X";
   });
 
   const turn = document.querySelector(".turn");
@@ -74,7 +66,6 @@ let grid = (function () {
     gridSpaces[i].addEventListener("click", () => {
       if (gridSpaces[i].textContent === "" && player.symbol() !== "") {
         gridSpaces[i].textContent = player.symbol();
-        console.log(gridSpaces[i].textContent);
         player.toggleTurn();
       }
     });
@@ -82,9 +73,6 @@ let grid = (function () {
 
   // Return public func/vars
   return {
-    log: () => {
-      console.log(gridSpaces);
-    },
     spaces: gridSpaces,
   };
 })();

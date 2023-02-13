@@ -17,94 +17,75 @@ body {
 }
 
 .container {
-  border: 1px solid gray;
   margin: 0 30%;
   display: flex;
   flex-direction: column;
-  flex: 0.5;
+  flex: 0.7;
   border-radius: 15px;
+  justify-content: center;
+  align-items: center;
 }
 
-.selector,
 .restart {
   flex: 1;
 }
-
-.selector {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5%;
-  background-color: white;
-  border-radius: 15px;
-}
-
-.selector button {
-  width: 25%;
-  padding: 10px;
-  cursor: pointer;
-  background-color: white;
-  font-size: 16px;
-  font-weight: bold;
-}
-
 .game {
-  flex: 4;
-  background-color: gray;
+  flex: 6;
+  background-color: rgb(255, 255, 255);
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 55%;
 }
 
 .box {
   display: grid;
-  grid-template-columns: repeat(3, minmax(65px, 1fr));
-  grid-template-rows: repeat(3, minmax(65px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  flex: 1;
+  height: 100%;
+}
+
+.bottom {
+  border-bottom: 7px solid rgb(18, 155, 197);
+}
+
+.right {
+  border-right: 7px solid rgb(18, 155, 197);
 }
 
 .box > div {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid white;
-  border-top: 0px;
-  border-left: 0px;
-  font-size: 50px;
+  font-size: 3.5rem;
 }
 
 .box > div:empty {
   cursor: pointer;
 }
 
-.box > div.right {
-  border-right: 0px;
-}
-
-.box > div.bottom {
-  border-radius: 0px;
-  border-bottom: 0px;
-}
-
 .restart {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
 }
 
 .restart button {
   flex: 1;
   height: 100%;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
   border: 0px;
-  font-size: 25px;
+  font-size: 35px;
   font-weight: bold;
   cursor: pointer;
   background-color: rgb(255, 255, 255);
+  transition-duration: 1s;
+  width: 100%;
 }
 
-button:active {
-  background-color: rgb(241, 241, 241);
+button:hover {
+  background-color: rgb(218, 218, 218);
 }
 
 button {
@@ -116,4 +97,6 @@ button {
   justify-content: center;
   align-items: center;
   margin-top: 5%;
+  margin-bottom: 25px;
+  font-size: 50px;
 }
