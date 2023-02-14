@@ -1,3 +1,21 @@
+names = (function () {
+  form = document.querySelector("#namesForm");
+  startButton = document.querySelector(".startButton");
+  registerPage = document.querySelector(".register");
+  containerPage = document.querySelector(".container");
+  paragraph = document.querySelector(".turn");
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault(); // Prevents form from submitting
+  });
+
+  startButton.addEventListener("click", () => {
+    registerPage.style.display = "none";
+    containerPage.style.display = "flex";
+    paragraph.style.display = "flex";
+  });
+})();
+
 let game = (function () {
   // Private func/vars
   let gameArray = [];
@@ -25,7 +43,7 @@ let game = (function () {
 
         // If there's a row of 3 x's then show winner
         if (row === 3) {
-          document.querySelector(".turn").textContent = "X is the winner!";
+          document.querySelector(".turn").textContent = "'X' is the winner!";
           gameEnd = true;
           row = 0;
           return;
@@ -42,7 +60,7 @@ let game = (function () {
 
         // If there's a row of 3 x's then show winner
         if (row === 3) {
-          document.querySelector(".turn").textContent = "O is the winner!";
+          document.querySelector(".turn").textContent = "'O' is the winner!";
           gameEnd = true;
           row = 0;
           return;
