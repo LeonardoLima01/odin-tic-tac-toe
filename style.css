@@ -143,6 +143,9 @@ form {
   background-color: rgb(59, 163, 248);
   padding: 20px;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .startButton {

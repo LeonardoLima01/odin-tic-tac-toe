@@ -1,12 +1,18 @@
 names = (function () {
-  form = document.querySelector("#namesForm");
-  startButton = document.querySelector(".startButton");
-  registerPage = document.querySelector(".register");
-  containerPage = document.querySelector(".container");
-  paragraph = document.querySelector(".turn");
+  const form = document.querySelector("#namesForm");
+  const startButton = document.querySelector(".startButton");
+  const registerPage = document.querySelector(".register");
+  const containerPage = document.querySelector(".container");
+  const paragraph = document.querySelector(".turn");
+  let xName = "!";
+  let oName = "!";
 
   form.addEventListener("submit", (event) => {
     event.preventDefault(); // Prevents form from submitting
+
+    xName = document.querySelector("#xName").value;
+    oName = document.querySelector("#oName").value;
+    paragraph.textContent = xName + "'s turn";
   });
 
   startButton.addEventListener("click", () => {
@@ -43,7 +49,8 @@ let game = (function () {
 
         // If there's a row of 3 x's then show winner
         if (row === 3) {
-          document.querySelector(".turn").textContent = "'X' is the winner!";
+          document.querySelector(".turn").textContent =
+            xName.value + " is the winner!";
           gameEnd = true;
           row = 0;
           return;
@@ -60,7 +67,8 @@ let game = (function () {
 
         // If there's a row of 3 x's then show winner
         if (row === 3) {
-          document.querySelector(".turn").textContent = "'O' is the winner!";
+          document.querySelector(".turn").textContent =
+            oName.value + " is the winner!";
           gameEnd = true;
           row = 0;
           return;
@@ -98,9 +106,9 @@ let player = (function () {
 
   // Switch paragraph text to indicate player's turn on screen
   let toggleTurn = () => {
-    turn.textContent[0] === "X"
-      ? (turn.textContent = "O's turn")
-      : (turn.textContent = "X's turn");
+    turn.textContent === xName.value + "'s turn"
+      ? (turn.textContent = oName.value + "'s turn")
+      : (turn.textContent = xName.value + "'s turn");
 
     playerSymbol === "X" ? (playerSymbol = "O") : (playerSymbol = "X");
   };
@@ -113,7 +121,7 @@ let player = (function () {
       grid.spaces[i].textContent = "";
     }
     // Reset turn
-    turn.textContent = "X's turn";
+    turn.textContent = xName.value + "'s turn";
 
     // Reset game.end variable
     game.toggleEnd();
@@ -126,7 +134,7 @@ let player = (function () {
   });
 
   const turn = document.querySelector(".turn");
-  turn.textContent = "X's turn";
+  turn.textContent = xName.value + "'s turn";
 
   // Return public func/vars
   return {
