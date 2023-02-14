@@ -22,7 +22,7 @@ body {
   margin: 0 30%;
   display: none;
   flex-direction: column;
-  flex: 0.7;
+  flex: 0.9;
   border-radius: 15px;
   justify-content: center;
   align-items: center;
@@ -61,7 +61,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 3.5rem;
+  font-size: 3vw;
 }
 
 .box > div:empty {
@@ -79,8 +79,7 @@ body {
   flex: 1;
   height: 100%;
   border: 0px;
-  font-size: 2vw;
-  font-weight: bold;
+  font-size: 3vw;
   cursor: pointer;
   background-color: rgb(255, 255, 255);
 
@@ -151,6 +150,7 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 6px solid rgb(255, 136, 67);
 }
 
 .startButton {
