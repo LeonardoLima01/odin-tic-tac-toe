@@ -1,5 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
 * {
-  font-family: Helvetica, sans-serif;
+  font-family: "Pacifico", cursive;
 }
 
 html {
@@ -112,7 +114,7 @@ button {
 }
 
 .title {
-  font-size: 3.5vw;
+  font-size: 5vw;
 }
 
 .names > form > div {
@@ -130,19 +132,20 @@ button {
 label {
   display: flex;
   justify-content: center;
-  font-size: 1.5vw;
+  font-size: 2vw;
   color: white;
 }
 
 input {
   padding: 7px;
   border-radius: 10px;
+  font-size: 1.3vw;
 }
 
 form {
   background-color: rgb(59, 163, 248);
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -154,7 +157,7 @@ form {
   cursor: pointer;
   background-color: rgb(255, 136, 67);
   color: white;
-  font-size: 1.1vw;
+  font-size: 1.3vw;
 }
 
 .startButton:hover {
