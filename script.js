@@ -4,6 +4,7 @@ names = (function () {
   const registerPage = document.querySelector(".register");
   const containerPage = document.querySelector(".container");
   const paragraph = document.querySelector(".turn");
+  const restartButton = document.querySelector(".restart");
   let xName = "";
   let oName = "";
 
@@ -26,11 +27,13 @@ names = (function () {
 
     // Show starting player's turn
     paragraph.textContent = xName !== "" ? xName + "'s turn" : "X's turn";
+    scoreBoard.setNames();
   });
   startButton.addEventListener("click", () => {
     registerPage.style.display = "none";
     containerPage.style.display = "flex";
     paragraph.style.display = "flex";
+    restartButton.style.display = "flex";
   });
 
   const getX = () => {
@@ -62,23 +65,32 @@ let game = (function () {
   ];
 
   let row = 0;
+  let xScore = document.querySelector(".leftScoreNumber");
+  let oScore = document.querySelector(".rightScoreNumber");
+
+  // quantity of plays, if = 9 and there isn't a inner then it's a draw
+  let plays = 0;
 
   const checkWin = (array) => {
+    plays++;
+
     // Check if X won
     for (let i = 0; i < 8; i++) {
       for (let j = 0; j < 3; j++) {
         if (array[possibleWins[i][j]] == "X") {
           row++;
         }
-
-        // If there's a row of 3 x's then show winner
-        if (row === 3) {
-          document.querySelector(".turn").textContent =
-            names.xName() + " is the winner!";
-          gameEnd = true;
-          row = 0;
-          return;
-        }
+      }
+      // If there's a row of 3 x's then show winner
+      if (row === 3) {
+        document.querySelector(".turn").textContent =
+          names.xName() + " is the winner!";
+        // ++ to player score
+        xScore.textContent++;
+        gameEnd = true;
+        row = 0;
+        plays = 0;
+        return;
       }
       row = 0;
     }
@@ -88,17 +100,26 @@ let game = (function () {
         if (array[possibleWins[i][j]] == "O") {
           row++;
         }
+      }
 
-        // If there's a row of 3 x's then show winner
-        if (row === 3) {
-          document.querySelector(".turn").textContent =
-            names.oName() + " is the winner!";
-          gameEnd = true;
-          row = 0;
-          return;
-        }
+      // If there's a row of 3 o's then show winner
+      if (row === 3) {
+        document.querySelector(".turn").textContent =
+          names.oName() + " is the winner!";
+        // ++ to player score
+        oScore.textContent++;
+        gameEnd = true;
+        row = 0;
+        plays = 0;
+        return;
       }
       row = 0;
+    }
+
+    if (plays == 9) {
+      document.querySelector(".turn").textContent = "Draw!";
+      plays = 0;
+      gameEnd = true;
     }
   };
 
@@ -110,6 +131,8 @@ let game = (function () {
 
   const clearGameArray = () => (game.array = []);
 
+  const getPlays = () => plays;
+
   // Return public func/vars
   return {
     array: gameArray,
@@ -118,6 +141,21 @@ let game = (function () {
     toggleEnd: toggleEndVar,
     getRow: getRow,
     clearArray: clearGameArray,
+    getPlays,
+  };
+})();
+
+let scoreBoard = (function () {
+  const xScoreName = document.querySelector(".leftScoreTitle");
+  const oScoreName = document.querySelector(".rightScoreTitle");
+
+  let setNames = () => {
+    xScoreName.textContent = names.xName();
+    oScoreName.textContent = names.oName();
+  };
+
+  return {
+    setNames,
   };
 })();
 
