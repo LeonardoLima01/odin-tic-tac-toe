@@ -83,11 +83,12 @@ body {
   font-weight: bold;
   cursor: pointer;
   background-color: rgb(255, 255, 255);
-  transition-duration: 1s;
+
   width: 100%;
 }
 
 button:hover {
+  transition-duration: 1s;
   background-color: rgb(218, 218, 218);
 }
 
@@ -115,6 +116,7 @@ button {
 
 .title {
   font-size: 5vw;
+  color: rgb(255, 123, 0);
 }
 
 .names > form > div {
@@ -161,7 +163,7 @@ form {
 }
 
 .startButton:hover {
-  background-color: rgb(255, 136, 67);
+  background-color: rgb(255, 94, 0);
 }
 
 .startButton:active {

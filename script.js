@@ -4,22 +4,46 @@ names = (function () {
   const registerPage = document.querySelector(".register");
   const containerPage = document.querySelector(".container");
   const paragraph = document.querySelector(".turn");
-  let xName = "!";
-  let oName = "!";
+  let xName = "";
+  let oName = "";
 
+  // Get user input for names
   form.addEventListener("submit", (event) => {
     event.preventDefault(); // Prevents form from submitting
 
     xName = document.querySelector("#xName").value;
     oName = document.querySelector("#oName").value;
-    paragraph.textContent = xName + "'s turn";
-  });
 
+    // If user input is null
+    if (xName === "") {
+      xName = "X";
+    }
+
+    // If user input is null
+    if (oName === "") {
+      oName = "O";
+    }
+
+    // Show starting player's turn
+    paragraph.textContent = xName !== "" ? xName + "'s turn" : "X's turn";
+  });
   startButton.addEventListener("click", () => {
     registerPage.style.display = "none";
     containerPage.style.display = "flex";
     paragraph.style.display = "flex";
   });
+
+  const getX = () => {
+    return xName;
+  };
+  const getO = () => {
+    return oName;
+  };
+
+  return {
+    xName: getX,
+    oName: getO,
+  };
 })();
 
 let game = (function () {
@@ -50,7 +74,7 @@ let game = (function () {
         // If there's a row of 3 x's then show winner
         if (row === 3) {
           document.querySelector(".turn").textContent =
-            xName.value + " is the winner!";
+            names.xName() + " is the winner!";
           gameEnd = true;
           row = 0;
           return;
@@ -68,7 +92,7 @@ let game = (function () {
         // If there's a row of 3 x's then show winner
         if (row === 3) {
           document.querySelector(".turn").textContent =
-            oName.value + " is the winner!";
+            names.oName() + " is the winner!";
           gameEnd = true;
           row = 0;
           return;
@@ -106,9 +130,9 @@ let player = (function () {
 
   // Switch paragraph text to indicate player's turn on screen
   let toggleTurn = () => {
-    turn.textContent === xName.value + "'s turn"
-      ? (turn.textContent = oName.value + "'s turn")
-      : (turn.textContent = xName.value + "'s turn");
+    turn.textContent === names.xName() + "'s turn"
+      ? (turn.textContent = names.oName() + "'s turn")
+      : (turn.textContent = names.xName() + "'s turn");
 
     playerSymbol === "X" ? (playerSymbol = "O") : (playerSymbol = "X");
   };
@@ -121,7 +145,7 @@ let player = (function () {
       grid.spaces[i].textContent = "";
     }
     // Reset turn
-    turn.textContent = xName.value + "'s turn";
+    turn.textContent = names.xName() + "'s turn";
 
     // Reset game.end variable
     game.toggleEnd();
@@ -134,7 +158,7 @@ let player = (function () {
   });
 
   const turn = document.querySelector(".turn");
-  turn.textContent = xName.value + "'s turn";
+  turn.textContent = names.xName() + "'s turn";
 
   // Return public func/vars
   return {
