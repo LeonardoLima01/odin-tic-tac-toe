@@ -131,6 +131,8 @@ let game = (function () {
 
   const clearGameArray = () => (game.array = []);
 
+  const resetPlays = () => (plays = 0);
+
   const getPlays = () => plays;
 
   // Return public func/vars
@@ -141,6 +143,7 @@ let game = (function () {
     toggleEnd: toggleEndVar,
     getRow: getRow,
     clearArray: clearGameArray,
+    resetPlays,
     getPlays,
   };
 })();
@@ -193,6 +196,9 @@ let player = (function () {
 
     // Reset player Symbol
     playerSymbol = "X";
+
+    // Reset plays var (draw variable)
+    game.resetPlays();
   });
 
   const turn = document.querySelector(".turn");
