@@ -16,6 +16,7 @@ body {
   padding: 0px;
   display: flex;
   flex-direction: column;
+  background-color: #086788;
 }
 
 .container {
@@ -30,7 +31,6 @@ body {
   flex: 1;
 }
 .game {
-  background-color: rgb(255, 255, 255);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,6 +49,7 @@ body {
 .scoresBox {
   display: flex;
   border: 5px solid black;
+  background-color: white;
 }
 
 .leftScore,
@@ -62,16 +63,28 @@ body {
   font-size: 3vw;
 }
 
+.scoreTitle {
+  color: rgb(83, 178, 255);
+}
+
 .leftScoreTitle,
 .rightScoreTitle {
   border-right: 5px solid black;
-  padding: 5px;
+  padding: 10px;
+  padding-top: 20px;
+  font-size: 0.8em;
+  display: flex;
+  align-items: center;
 }
 
 .leftScoreNumber,
 .rightScoreNumber {
   color: rgb(255, 123, 0);
-  padding: 5px;
+  padding: 10px;
+  padding-bottom: 13px;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
 }
 
 .bottom {
@@ -105,14 +118,13 @@ body {
   border: 0px;
   font-size: 3vw;
   cursor: pointer;
-  background-color: rgb(255, 255, 255);
+  background-color: transparent;
   width: 12%;
-  transition-duration: 1s;
+  transition: color 1s;
 }
 
 button:hover {
-  background-color: rgb(231, 231, 231);
-  color: rgb(255, 123, 0);
+  color: rgb(255, 143, 0);
 }
 
 button {
@@ -126,6 +138,7 @@ button {
   margin-top: 5%;
   margin-bottom: 25px;
   font-size: 4.5vw;
+  color: white;
 }
 
 .register {
@@ -135,6 +148,7 @@ button {
   flex-direction: column;
   align-items: center;
   gap: 25px;
+  background-color: #086788;
 }
 
 .title {
